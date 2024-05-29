@@ -24,11 +24,11 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def index() -> str:
     """Render the index page."""
     return render_template('2-index.html')
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port="5000", host="0.0.0.0", debug=True)
